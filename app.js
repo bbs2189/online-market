@@ -1,181 +1,94 @@
 /**
  * BozorGo — Zamonaviy Online Do'kon
- * Kengaytirilgan Menyular va Mahsulotlar Bazasi
+ * Foydalanuvchi talabiga mos Menyu va Mahsulotlar bazasi
  */
 
-// 1. KENGAYTIRILGAN KATEGORIYALAR RO'YXATI (12 TA TOIFA)
+// 1. FOYDALANUVCHI BELGILAB BERGAN ANIQ KATEGORIYALAR MENYUSI
 const categories = [
     { 
         id: 'all', 
         name: 'Barchasi', 
         icon: 'fa-solid fa-border-all', 
-        desc: 'Barcha toifadagi eng sara va ommabop tovarlar',
-        gradient: 'from-blue-600 to-indigo-600',
-        bgLight: 'bg-blue-50 text-blue-600'
+        desc: 'Barcha toifadagi eng sara va ommabop mahsulotlar',
+        gradient: 'from-blue-600 to-indigo-600'
     },
     { 
-        id: 'smartphones', 
-        name: 'Smartfon & Gadjetlar', 
+        id: 'electronics', 
+        name: 'Elektronika va smartfonlar', 
         icon: 'fa-solid fa-mobile-screen-button', 
-        desc: 'Eng so\'nggi flagman telefonlar, aqlli soatlar va quloqchinlar',
-        gradient: 'from-sky-500 to-blue-600',
-        bgLight: 'bg-sky-50 text-sky-600'
-    },
-    { 
-        id: 'laptops', 
-        name: 'Noutbuk & Kompyuter', 
-        icon: 'fa-solid fa-laptop', 
-        desc: 'Ish, o\'qish va grafik dasturlar uchun kuchli kompyuterlar',
-        gradient: 'from-indigo-500 to-purple-600',
-        bgLight: 'bg-indigo-50 text-indigo-600'
+        desc: 'Eng so\'nggi smartfonlar, noutbuklar, quloqchinlar va aqlli gadjetlar',
+        gradient: 'from-sky-500 to-blue-600'
     },
     { 
         id: 'appliances', 
         name: 'Maishiy texnika', 
         icon: 'fa-solid fa-blender', 
-        desc: 'Oshxona va uy qulayligi uchun zamonaviy texnikalar',
-        gradient: 'from-orange-500 to-amber-600',
-        bgLight: 'bg-orange-50 text-orange-600'
+        desc: 'Oshxona va xonadon uchun zarur maishiy texnika uskunalari',
+        gradient: 'from-orange-500 to-amber-600'
     },
     { 
-        id: 'clothes', 
-        name: 'Kiyim & Moda', 
+        id: 'clothing', 
+        name: 'Kiyim va poyabzal', 
         icon: 'fa-solid fa-shirt', 
-        desc: 'Erkaklar va ayollar uchun mavsumiy zamonaviy kiyimlar',
-        gradient: 'from-rose-500 to-pink-600',
-        bgLight: 'bg-rose-50 text-rose-600'
-    },
-    { 
-        id: 'shoes', 
-        name: 'Poyabzallar', 
-        icon: 'fa-solid fa-shoe-prints', 
-        desc: 'Krossovkalar, sport va kundalik qulay poyabzallar',
-        gradient: 'from-teal-500 to-emerald-600',
-        bgLight: 'bg-teal-50 text-teal-600'
+        desc: 'Erkaklar va ayollar uchun zamonaviy liboslar hamda qulay poyabzallar',
+        gradient: 'from-rose-500 to-pink-600'
     },
     { 
         id: 'groceries', 
-        name: 'Oziq-ovqat', 
+        name: 'Oziq-ovqat va ichimliklar', 
         icon: 'fa-solid fa-basket-shopping', 
-        desc: 'Yangi, tabiiy va organik oziq-ovqat mahsulotlari',
-        gradient: 'from-emerald-500 to-green-600',
-        bgLight: 'bg-emerald-50 text-emerald-600'
+        desc: 'Tabiiy, sifatli oziq-ovqatlar, qahva, choy va tansiq shirinliklar',
+        gradient: 'from-emerald-500 to-green-600'
     },
     { 
         id: 'books', 
-        name: 'Kitoblar & Ilm', 
+        name: 'Kitoblar va ilm-fan', 
         icon: 'fa-solid fa-book-open', 
-        desc: 'Jahon bestsellerlari, biznes, rivojlanish va badiiy adabiyot',
-        gradient: 'from-amber-500 to-yellow-600',
-        bgLight: 'bg-amber-50 text-amber-600'
+        desc: 'Jahon bestsellerlari, shaxsiy rivojlanish, biznes va ilm-fan asarlari',
+        gradient: 'from-amber-500 to-yellow-600'
     },
     { 
         id: 'sports', 
-        name: 'Sport & Salomatlik', 
+        name: 'Sport va salomatlik', 
         icon: 'fa-solid fa-dumbbell', 
-        desc: 'Trenajyorlar, gantellar va fitnes aksessuarlari',
-        gradient: 'from-red-500 to-orange-600',
-        bgLight: 'bg-red-50 text-red-600'
-    },
-    { 
-        id: 'beauty', 
-        name: 'Go\'zallik & Parvarish', 
-        icon: 'fa-solid fa-wand-magic-sparkles', 
-        desc: 'Fransuz parfyumeriyasi va sifatli kosmetika vositalari',
-        gradient: 'from-fuchsia-500 to-pink-600',
-        bgLight: 'bg-fuchsia-50 text-fuchsia-600'
-    },
-    { 
-        id: 'kids', 
-        name: 'Bolalar tovarlari', 
-        icon: 'fa-solid fa-gamepad', 
-        desc: 'Konstruktorlar, rivojlantiruvchi o\'yinchoqlar va samokatlar',
-        gradient: 'from-purple-500 to-violet-600',
-        bgLight: 'bg-purple-50 text-purple-600'
-    },
-    { 
-        id: 'auto', 
-        name: 'Avtotovarlar', 
-        icon: 'fa-solid fa-car', 
-        desc: 'Videoregistratorlar, avto aksessuarlar va qulaylik vositalari',
-        gradient: 'from-slate-700 to-slate-900',
-        bgLight: 'bg-slate-100 text-slate-700'
+        desc: 'Fitnes, mashg\'ulot anjomlari, massajyorlar va sog\'lom hayot vositalari',
+        gradient: 'from-red-500 to-orange-600'
     }
 ];
 
-// 2. KENGAYTIRILGAN MAHSULOTLAR BAZASI (55+ TA MAHSULOT, BARCHASI SO'MDA)
+// 2. KATEGORIYALARGA MOS KENG MAHSULOTLAR BAZASI (BARCHASI SO'MDA)
 const products = [
-    // -------------------------------------------------------------
-    // SMARTFON & GADJETLAR
-    // -------------------------------------------------------------
+    // =============================================================
+    // 1. ELEKTRONIKA VA SMARTFONLAR
+    // =============================================================
     {
         id: 1,
-        name: 'Apple iPhone 15 Pro Max 256GB Titanium',
-        category: 'smartphones',
+        name: 'Apple iPhone 15 Pro Max 256GB Natural Titanium',
+        category: 'electronics',
         price: 16800000,
         oldPrice: 18200000,
         rating: 4.9,
-        reviewsCount: 142,
+        reviewsCount: 154,
         image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=80',
         badge: 'Top Sotuv',
-        desc: 'Aviatsiya darajasidagi titan korpus, A17 Pro qudratli protsessori, 48MP professional kamera va USB-C 3.0.'
+        desc: 'Aviatsiya darajasidagi titan korpus, A17 Pro o\'yinbop protsessori, 48MP professional kamera va Type-C.'
     },
     {
         id: 2,
-        name: 'Samsung Galaxy S24 Ultra 512GB Titanium Gray',
-        category: 'smartphones',
+        name: 'Samsung Galaxy S24 Ultra 512GB Gray',
+        category: 'electronics',
         price: 15200000,
         oldPrice: 16500000,
         rating: 4.8,
-        reviewsCount: 98,
+        reviewsCount: 112,
         image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80',
         badge: 'Yangi',
-        desc: 'Galaxy AI sun\'iy intellekt texnologiyasi, o\'rnatilgan S-Pen stilus, 200MP kamera va 120Hz Dynamic AMOLED ekran.'
+        desc: 'Galaxy AI sun\'iy intellekti, o\'rnatilgan S-Pen qalami, 200MP kamera va 120Hz Dynamic AMOLED ekrani.'
     },
     {
         id: 3,
-        name: 'Xiaomi 14 Pro 12/256GB Black',
-        category: 'smartphones',
-        price: 8900000,
-        oldPrice: 9800000,
-        rating: 4.7,
-        reviewsCount: 65,
-        image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop&q=80',
-        badge: 'Aksiya',
-        desc: 'Leica optikasi bilan jihozlangan kamera, Snapdragon 8 Gen 3 protsessor va 120W HyperCharge o\'ta tezkor quvvatlash.'
-    },
-    {
-        id: 4,
-        name: 'Apple Watch Series 9 45mm Midnight',
-        category: 'smartphones',
-        price: 5300000,
-        oldPrice: 5800000,
-        rating: 4.9,
-        reviewsCount: 74,
-        image: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=600&auto=format&fit=crop&q=80',
-        badge: 'Xit',
-        desc: 'Yangi Double Tap imo-ishora nazorati, S9 SiP chipi, 2000 nit ultra-yorqin displey va salomatlik nazorati.'
-    },
-    {
-        id: 5,
-        name: 'Apple AirPods Pro 2 (USB-C MagSafe)',
-        category: 'smartphones',
-        price: 3100000,
-        oldPrice: 3500000,
-        rating: 4.9,
-        reviewsCount: 162,
-        image: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=600&auto=format&fit=crop&q=80',
-        badge: 'Top',
-        desc: '2 barobar kuchliroq faol shovqinni to\'sish (ANC), Shaffoflik rejimi, Spatial Audio va USB-C g'ilof.'
-    },
-
-    // -------------------------------------------------------------
-    // NOUTBUK & KOMPYUTER
-    // -------------------------------------------------------------
-    {
-        id: 6,
         name: 'Apple MacBook Air 13.6" M2 8/256GB Space Gray',
-        category: 'laptops',
+        category: 'electronics',
         price: 12500000,
         oldPrice: 13800000,
         rating: 4.9,
@@ -185,365 +98,397 @@ const products = [
         desc: 'Yupqa va yengil alyuminiy korpus, Apple M2 chipi, 18 soatlik batareya quvvati va Liquid Retina displey.'
     },
     {
-        id: 7,
-        name: 'ASUS ROG Zephyrus G14 Gaming Ryzen 9 / RTX 4060',
-        category: 'laptops',
-        price: 17900000,
-        oldPrice: 19500000,
+        id: 4,
+        name: 'Sony WH-1000XM5 Simsiz ANC Quloqchin',
+        category: 'electronics',
+        price: 4100000,
+        oldPrice: 4600000,
+        rating: 4.9,
+        reviewsCount: 78,
+        image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80',
+        badge: 'Chegirma',
+        desc: 'Soha yetakchisi bo\'lgan shovqinni faol to\'sish (ANC), 30 soat batareya va kristaldek toza Hi-Res ovoz.'
+    },
+    {
+        id: 5,
+        name: 'Apple Watch Series 9 45mm Midnight Sport Band',
+        category: 'electronics',
+        price: 5300000,
+        oldPrice: 5800000,
         rating: 4.8,
-        reviewsCount: 42,
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80',
-        badge: 'Gaming',
-        desc: '165Hz ROG Nebula displey, kuchli sovutish tizimi, AniMe Matrix qopqoq va ultra-portativ korpus.'
+        reviewsCount: 65,
+        image: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=600&auto=format&fit=crop&q=80',
+        badge: null,
+        desc: 'Double Tap imo-ishorali boshqaruv, S9 SiP chipi, 2000 nit ultra-yorqin ekran va salomatlik datchiklari.'
+    },
+    {
+        id: 6,
+        name: 'Apple AirPods Pro 2 (USB-C MagSafe)',
+        category: 'electronics',
+        price: 3100000,
+        oldPrice: 3500000,
+        rating: 4.9,
+        reviewsCount: 190,
+        image: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=600&auto=format&fit=crop&q=80',
+        badge: 'Xit',
+        desc: '2 barobar samarali shovqinni kamaytirish, adaptiv audio, fazoviy ovoz va Type-C quvvatlash g\'ilofi.'
+    },
+    {
+        id: 7,
+        name: 'Xiaomi 14 Pro 12/256GB Leica Black',
+        category: 'electronics',
+        price: 8900000,
+        oldPrice: 9800000,
+        rating: 4.7,
+        reviewsCount: 70,
+        image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop&q=80',
+        badge: 'Aksiya',
+        desc: 'Professional Leica optikasi, Snapdragon 8 Gen 3 protsessori va 120W ultra-tezkor quvvatlash.'
     },
     {
         id: 8,
-        name: 'Apple iPad Pro 11" M2 Wi-Fi 128GB',
-        category: 'laptops',
+        name: 'Apple iPad Pro 11" M2 Wi-Fi 128GB Space Gray',
+        category: 'electronics',
         price: 9800000,
         oldPrice: 10900000,
         rating: 4.9,
-        reviewsCount: 56,
+        reviewsCount: 52,
         image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&auto=format&fit=crop&q=80',
         badge: null,
-        desc: 'M2 chipining professional unumdorligi, Apple Pencil Hover qo\'llab-quvvatlashi va ProMotion 120Hz displey.'
-    },
-    {
-        id: 9,
-        name: 'Logitech MX Master 3S Ergonomik Sichqoncha',
-        category: 'laptops',
-        price: 1350000,
-        oldPrice: 1550000,
-        rating: 5.0,
-        reviewsCount: 112,
-        image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80',
-        badge: 'Ofis',
-        desc: 'O\'ta sokin bosilish (Quiet Clicks), 8K DPI datchik, MagSpeed elektromagnit aylantirish va qulay ergonomika.'
-    },
-    {
-        id: 10,
-        name: 'Xiaomi Curved Gaming Monitor 34" 144Hz WQHD',
-        category: 'laptops',
-        price: 4600000,
-        oldPrice: 5200000,
-        rating: 4.7,
-        reviewsCount: 39,
-        image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&auto=format&fit=crop&q=80',
-        badge: 'Chegirma',
-        desc: '21:9 keng burchakli 1500R egri ekran, FreeSync texnologiyasi va ajoyib 3440x1440 piksel tasvir tiniqligi.'
+        desc: 'M2 kuchli chipi, ProMotion 120Hz ekran, Apple Pencil 2 qo\'llab-quvvatlashi va 4 ta stereodinamik.'
     },
 
-    // -------------------------------------------------------------
-    // MAISHIY TEXNIKA
-    // -------------------------------------------------------------
+    // =============================================================
+    // 2. MAISHIY TEXNIKA
+    // =============================================================
     {
-        id: 11,
+        id: 9,
         name: 'Artel Sovutgich HD-345FW NoFrost Silver',
         category: 'appliances',
         price: 4800000,
         oldPrice: 5200000,
         rating: 4.6,
-        reviewsCount: 52,
+        reviewsCount: 58,
         image: 'https://images.unsplash.com/photo-1584992236310-6edddc08acff?w=600&auto=format&fit=crop&q=80',
         badge: 'Aksiya',
-        desc: 'No Frost tizimi, A+ energiya tejamkorlik sinfi, keng muzlatgich kamerasi va antibakterial himoya.'
+        desc: 'No Frost tizimi, energiya tejovchi A+ sinf, keng muzlatish bo\'limi va yangilikni saqlovchi zona.'
     },
     {
-        id: 12,
+        id: 10,
         name: 'LG Inverter Kir Yuvish Mashinasi 7kg AI DD',
         category: 'appliances',
         price: 5600000,
         oldPrice: 6100000,
         rating: 4.8,
-        reviewsCount: 77,
+        reviewsCount: 84,
         image: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&auto=format&fit=crop&q=80',
         badge: 'Top Sotuv',
-        desc: 'Sun\'iy intellekt mato turini aniqlaydi, bug\' bilan antibakterial tozalash va to\'g\'ridan-to\'g\'ri drayv motor.'
+        desc: 'Aqlli matoni aniqlash tizimi, bug\' bilan antibakterial tozalash va to\'g\'ridan-to\'g\'ri jim motor.'
     },
     {
-        id: 13,
+        id: 11,
         name: 'Xiaomi Robot Changyutgich S10+ Smart Mop',
         category: 'appliances',
         price: 2950000,
         oldPrice: 3400000,
         rating: 4.7,
-        reviewsCount: 110,
+        reviewsCount: 125,
         image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80',
         badge: 'Aqlli uy',
-        desc: 'LDS lazerli xarita chizish, 4000Pa kuchli tortish, aylanuvchi pol yuvish cho\'tkalari va avtomatik boshqaruv.'
+        desc: 'Lazerli xarita tuzish (LDS), 4000Pa kuchli tortish, aylanuvchi nam matolar bilan pol yuvish.'
     },
     {
-        id: 14,
+        id: 12,
         name: 'Dyson Supersonic Soch Quritgich Fen HD08',
         category: 'appliances',
         price: 5900000,
         oldPrice: 6500000,
         rating: 5.0,
-        reviewsCount: 94,
+        reviewsCount: 96,
         image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&auto=format&fit=crop&q=80',
         badge: 'Premium',
-        desc: 'Sochni haddan tashqari qizib ketishdan asraydi, magnitli nozzillar to\'plami va tezkor ionlashtirilgan havo oqimi.'
+        desc: 'Sochni haddan tashqari qizib ketishdan asrovchi intellektual sensor va magnitli nozzillar to\'plami.'
     },
     {
-        id: 15,
+        id: 13,
+        name: 'Philips Elektr Choynak HD9350 1.7L Inox',
+        category: 'appliances',
+        price: 450000,
+        oldPrice: 520000,
+        rating: 4.9,
+        reviewsCount: 145,
+        image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80',
+        badge: null,
+        desc: 'Oziq-ovqat po\'latidan korpus, tez qaynatish spirali va xavfsiz avtomatik o\'chish tizimi.'
+    },
+    {
+        id: 14,
         name: 'De\'Longhi Dedica Espresso Qahva Mashinasi',
         category: 'appliances',
         price: 3200000,
         oldPrice: 3600000,
         rating: 4.8,
-        reviewsCount: 39,
+        reviewsCount: 42,
         image: 'https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=600&auto=format&fit=crop&q=80',
+        badge: 'Tavsiya',
+        desc: '15 bar nasos bosimi, qalin ko\'pikli kapuchino tayyorlagich va metall italyancha korpus.'
+    },
+    {
+        id: 15,
+        name: 'Tefal Express Steam Bug\'li Dazmol',
+        category: 'appliances',
+        price: 680000,
+        oldPrice: 790000,
+        rating: 4.7,
+        reviewsCount: 61,
+        image: 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=600&auto=format&fit=crop&q=80',
         badge: null,
-        desc: '15 bar nasos bosimi, qalin ko\'pikli kapuchino tayyorlagich va ixcham italyan metall korpusi.'
+        desc: 'Seramika taglik, kuchli bug\' zarbasi va kiyimlardagi qiyin burmalarni bir zumda silliqlash.'
     },
 
-    // -------------------------------------------------------------
-    // KIYIM & MODA
-    // -------------------------------------------------------------
+    // =============================================================
+    // 3. KIYIM VA POYABZAL
+    // =============================================================
     {
         id: 16,
         name: 'Erkaklar Klassik Slim-Fit Kostyum-Shimi',
-        category: 'clothes',
+        category: 'clothing',
         price: 1200000,
         oldPrice: 1500000,
         rating: 4.7,
-        reviewsCount: 34,
+        reviewsCount: 40,
         image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&auto=format&fit=crop&q=80',
         badge: 'Klassika',
-        desc: 'Tabiiy jun aralashmali mato, mukammal bichim va rasmiy tadbirlar uchun bashang ko\'rinish.'
+        desc: 'Jun aralashmali sifatli mato, nafis bichim va to\'y hamda rasmiy yig\'ilishlar uchun ajoyib ko\'rinish.'
     },
     {
         id: 17,
-        name: 'Ayollar Elegant Kechki Shoyi Ko\'ylagi',
-        category: 'clothes',
-        price: 750000,
-        oldPrice: 900000,
-        rating: 4.8,
-        reviewsCount: 46,
-        image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&auto=format&fit=crop&q=80',
-        badge: 'Yangi',
-        desc: 'Nafis ipaksimon mato, qomatga urg\'u beruvchi zamonaviy dizayn va bayramona joziba.'
-    },
-    {
-        id: 18,
-        name: 'Qishki Issiq Kurtka (Suv va Shamol O\'tkazmaydigan)',
-        category: 'clothes',
-        price: 980000,
-        oldPrice: 1200000,
-        rating: 4.8,
-        reviewsCount: 88,
-        image: 'https://images.unsplash.com/photo-1548883354-7622d03aca27?w=600&auto=format&fit=crop&q=80',
-        badge: 'Mavsumiy',
-        desc: 'Bio-pat bilan to\'ldirilgan, sovuq haroratlarda qulay issiqlikni saqlovchi chuqur kapyushonli kurtka.'
-    },
-    {
-        id: 19,
-        name: 'Oversize Paxtali Kapushonkali Xudi (Unisex)',
-        category: 'clothes',
-        price: 320000,
-        oldPrice: 390000,
-        rating: 4.6,
-        reviewsCount: 104,
-        image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&auto=format&fit=crop&q=80',
-        badge: null,
-        desc: '100% paxta, yumshoq flis ichki qatlam, keng qulay keng cho\'ntak va elastik manjetlar.'
-    },
-    {
-        id: 20,
-        name: 'Erkaklar Klassik Jun Palto (To\'q Ko\'k)',
-        category: 'clothes',
-        price: 1650000,
-        oldPrice: 1950000,
-        rating: 4.9,
-        reviewsCount: 29,
-        image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop&q=80',
-        badge: 'Premium',
-        desc: 'Italiya texnologiyasida tayyorlangan tabiiy kashmer-jun mato, nafis yoqa va qulay cho\'ntaklar.'
-    },
-
-    // -------------------------------------------------------------
-    // POYABZALLAR
-    // -------------------------------------------------------------
-    {
-        id: 21,
-        name: 'Nike Air Force 1 \'07 Klassik Oq Krossovka',
-        category: 'shoes',
+        name: 'Nike Air Force 1 \'07 Afsonaviy Oq Krossovka',
+        category: 'clothing',
         price: 1450000,
         oldPrice: 1650000,
         rating: 4.9,
-        reviewsCount: 215,
+        reviewsCount: 235,
         image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=80',
         badge: 'Ommabop',
-        desc: 'Haqiqiy charm ustki qism, afsonaviy Nike Air yostiqchasi va har qanday kiyimga mos oq rang.'
+        desc: '100% tabiiy teri ustki qism, qulay Nike Air amortizatsiyasi va o\'zgarmas klassik oq dizayn.'
     },
     {
-        id: 22,
+        id: 18,
+        name: 'Ayollar Elegant Kechki Shoyi Ko\'ylagi',
+        category: 'clothing',
+        price: 750000,
+        oldPrice: 900000,
+        rating: 4.8,
+        reviewsCount: 49,
+        image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&auto=format&fit=crop&q=80',
+        badge: 'Yangi',
+        desc: 'Mayin ipaksimon mato, zamonaviy qomatga mos bichim, bayramona va jozibali ko\'rinish.'
+    },
+    {
+        id: 19,
+        name: 'Qishki Issiq Kurtka (Suv o\'tkazmaydigan)',
+        category: 'clothing',
+        price: 980000,
+        oldPrice: 1200000,
+        rating: 4.8,
+        reviewsCount: 92,
+        image: 'https://images.unsplash.com/photo-1548883354-7622d03aca27?w=600&auto=format&fit=crop&q=80',
+        badge: 'Mavsumiy',
+        desc: 'Bio-pat to\'ldiruvchi, shamoldan himoyalovchi baland yoqa va chuqur qulay kapyushon.'
+    },
+    {
+        id: 20,
         name: 'Adidas Ultraboost Light Yugurish Krossovkasi',
-        category: 'shoes',
+        category: 'clothing',
         price: 1850000,
         oldPrice: 2100000,
         rating: 4.9,
-        reviewsCount: 83,
+        reviewsCount: 88,
         image: 'https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=600&auto=format&fit=crop&q=80',
         badge: 'Sport',
         desc: 'Yengil Boost taglik, qadam tashlashda mislsiz energiya qaytarish va nafas oluvchi Primeknit matosi.'
     },
     {
-        id: 23,
-        name: 'New Balance 574 Kundalik Qulay Krossovka',
-        category: 'shoes',
-        price: 1290000,
-        oldPrice: 1450000,
-        rating: 4.8,
-        reviewsCount: 118,
-        image: 'https://images.unsplash.com/photo-1539185441755-769473a23570?w=600&auto=format&fit=crop&q=80',
+        id: 21,
+        name: 'Oversize Paxtali Kapushonkali Xudi (Unisex)',
+        category: 'clothing',
+        price: 320000,
+        oldPrice: 390000,
+        rating: 4.6,
+        reviewsCount: 110,
+        image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&auto=format&fit=crop&q=80',
         badge: null,
-        desc: 'Zamshe va to\'qima mato uyg\'unligi, ENCAP mustahkam taglik amortizatsiyasi va klassik NB dizayni.'
+        desc: '100% tabiiy paxta, yumshoq flis ichki qatlam, keng qulay kangooro cho\'ntak.'
     },
     {
-        id: 24,
+        id: 22,
         name: 'Erkaklar Tabiiy Charm Klassik Tuflisi',
-        category: 'shoes',
+        category: 'clothing',
         price: 890000,
         oldPrice: 1050000,
         rating: 4.7,
-        reviewsCount: 45,
+        reviewsCount: 48,
         image: 'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=600&auto=format&fit=crop&q=80',
         badge: 'Klassika',
-        desc: '100% tabiiy buzoq terisi, ortopedik taglik va rasmiy tadbirlar uchun oqlangan joziba.'
+        desc: 'Haqiqiy charm ustki qism va astar, ortopedik taglik va rasmiy uslub uyg\'unligi.'
     },
 
-    // -------------------------------------------------------------
-    // OZIK-OVQAT MAHSULOTLARI
-    // -------------------------------------------------------------
+    // =============================================================
+    // 4. OZIQ-OVQAT VA ICHIMLIKLAR
+    // =============================================================
     {
-        id: 25,
-        name: 'Tabiiy Zomin Tog\' Asali 1 kg (Sof Asal)',
+        id: 23,
+        name: 'Tabiiy Zomin Tog\' Asali 1 kg (Toza Shifobaxsh)',
         category: 'groceries',
         price: 140000,
         oldPrice: 165000,
         rating: 5.0,
-        reviewsCount: 156,
+        reviewsCount: 165,
         image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&auto=format&fit=crop&q=80',
         badge: 'Tabiiy ECO',
-        desc: 'Tog\' gullari shirasidan olingan tabiiy shifobaxsh asal. Tarkibida shakar va begona qo\'shimchalar yo\'q.'
+        desc: 'Zomin tog\'larining yovvoyi gullaridan olingan toza asal. Shakarsiz, 100% organik.'
     },
     {
-        id: 26,
+        id: 24,
         name: 'Samarqand Non va Milliy Shirinliklar To\'plami',
         category: 'groceries',
         price: 75000,
         oldPrice: 90000,
         rating: 4.9,
-        reviewsCount: 72,
+        reviewsCount: 78,
         image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80',
         badge: 'Milliy',
-        desc: 'An\'anaviy Samarqand patiri, bodomli holva va xushbo\'y pishiriqlar to\'plami.'
+        desc: 'An\'anaviy Samarqand patiri, bodomli va yong\'oqli shirinliklar hamda xolva.'
     },
     {
-        id: 27,
+        id: 25,
         name: 'Monini Extra Virgin Sof Zaytun Moyi 1L',
         category: 'groceries',
         price: 135000,
         oldPrice: 155000,
         rating: 4.8,
-        reviewsCount: 64,
+        reviewsCount: 68,
         image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80',
         badge: 'Italiya',
-        desc: 'Birinchi sovuq siqim orqali olingan Italiya zaytun moyi. Salatlar va sog\'lom taomlar uchun ideal.'
+        desc: 'Sovuq siqim usulida olingan sof Italiya zaytun moyi. Salatlar va pishiriqlar uchun a\'lo tanlov.'
     },
     {
-        id: 28,
+        id: 26,
         name: 'Lavazza Qualita Oro Donali Qahva 1kg',
         category: 'groceries',
         price: 285000,
         oldPrice: 320000,
         rating: 4.9,
-        reviewsCount: 89,
+        reviewsCount: 94,
         image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80',
         badge: 'Premium',
-        desc: '100% Markaziy Amerika Arabikasi, mayin mevali nozik ta\'m va kuchli xushbo\'ylik.'
+        desc: '100% tanlangan Arabika donalari, Italiyada qovurilgan boy xushbo\'y va mayin ta\'mli qahva.'
     },
     {
-        id: 29,
+        id: 27,
         name: 'Lindt Shveytsariya Shokoladi Assorti 250g',
         category: 'groceries',
         price: 95000,
         oldPrice: 110000,
         rating: 4.9,
-        reviewsCount: 95,
+        reviewsCount: 102,
         image: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=600&auto=format&fit=crop&q=80',
         badge: null,
-        desc: 'Og\'izda eruvchi mayin shveytsariya sutli va achchiq shokoladlari to\'plami.'
+        desc: 'Mayin sutli va quyuq shokolad sharlari, og\'izda erib ketuvchi nafis qaymoqli mag\'iz.'
+    },
+    {
+        id: 28,
+        name: 'Ahmad Tea Imperial Blend Yirik Bargli Qora Choy',
+        category: 'groceries',
+        price: 85000,
+        oldPrice: 98000,
+        rating: 4.8,
+        reviewsCount: 56,
+        image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&auto=format&fit=crop&q=80',
+        badge: 'Choy',
+        desc: 'Seylon va Assam barglarining eng sara navlari aralashmasi, yorqin rang va xushbo\'y ifor.'
     },
 
-    // -------------------------------------------------------------
-    // KITOBLAR & ILM
-    // -------------------------------------------------------------
+    // =============================================================
+    // 5. KITOBLAR VA ILM-FAN
+    // =============================================================
     {
-        id: 30,
-        name: 'Atom Odatlar — Jeyms Klir (Bestseller)',
+        id: 29,
+        name: 'Atom Odatlar — Jeyms Klir (Bestseller Kitob)',
         category: 'books',
         price: 65000,
         oldPrice: 75000,
         rating: 5.0,
-        reviewsCount: 310,
+        reviewsCount: 320,
         image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80',
         badge: 'Bestseller',
-        desc: 'Kichik kundalik odatlar qanday qilib hayotda ulkan natijalarga erishishga olib kelishini o\'rgatuvchi kitob.'
+        desc: 'Kichik kundalik odatlar orqali shaxsiy hayot va kasbda ulkan marralarga erishish qo\'llanmasi.'
     },
     {
-        id: 31,
+        id: 30,
         name: 'Stiv Jobs Rasmiy Biografiyasi — Uolter Ayzekson',
         category: 'books',
         price: 110000,
         oldPrice: 130000,
         rating: 4.9,
-        reviewsCount: 140,
+        reviewsCount: 145,
         image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80',
         badge: 'Tarixiy',
-        desc: 'Apple asoschisining hayoti, xarakteri, g\'oyalari va texnologiya olamidagi inqilobiy yutuqlari.'
+        desc: 'Apple asoschisining hayoti, xarakteri, ijodiy dahosi va dunyoni o\'zgartirgan kashfiyotlari.'
     },
     {
-        id: 32,
+        id: 31,
         name: 'Boy Ota, Kambag\'al Ota — Robert Kiyosaki',
         category: 'books',
         price: 55000,
         oldPrice: 65000,
         rating: 4.8,
-        reviewsCount: 220,
+        reviewsCount: 230,
         image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80',
         badge: 'Moliya',
-        desc: 'Moliyaviy erkinlik, aktivlar va pul qanday ishlashi haqida jahonga mashhur qo\'llanma.'
+        desc: 'Pul nima va u qanday ishlaydi? Moliyaviy erkinlik va investitsiyalar sirlari haqida mashhur asar.'
     },
     {
-        id: 33,
-        name: 'Alkimyogar — Paulo Koelo (Falsafiy Asar)',
+        id: 32,
+        name: 'Alkimyogar — Paulo Koelo (Falsafiy Roman)',
         category: 'books',
         price: 45000,
         oldPrice: 50000,
         rating: 4.7,
-        reviewsCount: 180,
+        reviewsCount: 190,
         image: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80',
         badge: null,
-        desc: 'O\'z orzulari ortidan yo\'lga chiqqan cho\'pon Santyagoning ma\'naviy boyligi va taqdir haqidagi ramziy asari.'
+        desc: 'O\'z orzusi tomon intilgan yosh cho\'pon Santyagoning ma\'naviy izlanishlari va taqdir falsafasi.'
     },
     {
-        id: 34,
+        id: 33,
         name: 'Saodat Asri Qissalari (4 jildlik to\'liq to\'plam)',
         category: 'books',
         price: 320000,
         oldPrice: 360000,
         rating: 5.0,
-        reviewsCount: 280,
+        reviewsCount: 295,
         image: 'https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=600&auto=format&fit=crop&q=80',
         badge: 'Mashhur',
-        desc: 'Payg\'ambarimiz sollallohu alayhi vasallam va sahobai kiromlarning ibratli hayotlari haqidagi to'liq majmua.'
+        desc: 'Payg\'ambarimiz sollallohu alayhi vasallam va u zotning sahobalarining nurli hayoti haqidagi to\'liq asar.'
+    },
+    {
+        id: 34,
+        name: 'Koinot: Ilm-Fan va Kvant Dunyosi Sirlari',
+        category: 'books',
+        price: 75000,
+        oldPrice: 90000,
+        rating: 4.9,
+        reviewsCount: 82,
+        image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80',
+        badge: 'Ilm-fan',
+        desc: 'Koinotning yaralishi, qora tuynuklar, zamonaviy fizika va koinotni tadqiq qilish haqida qiziqarli kitob.'
     },
 
-    // -------------------------------------------------------------
-    // SPORT & SALOMATLIK
-    // -------------------------------------------------------------
+    // =============================================================
+    // 6. SPORT VA SALOMATLIK
+    // =============================================================
     {
         id: 35,
         name: 'Gantellar To\'plami 2x10kg (Yig\'iladigan Metall)',
@@ -551,10 +496,10 @@ const products = [
         price: 490000,
         oldPrice: 550000,
         rating: 4.8,
-        reviewsCount: 62,
+        reviewsCount: 68,
         image: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&auto=format&fit=crop&q=80',
         badge: 'Sport',
-        desc: 'Og\'irligi oson sozlanuvchi xromlangan disklar, sirpanmaydigan rezinali tutqich va qulflash gaykalari.'
+        desc: 'Vazni oson o\'zgaruvchi xromlangan disklar, qulay sirpanmaydigan tutqich va qulflash gaykalari.'
     },
     {
         id: 36,
@@ -563,190 +508,58 @@ const products = [
         price: 150000,
         oldPrice: 185000,
         rating: 4.7,
-        reviewsCount: 44,
+        reviewsCount: 50,
         image: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=600&auto=format&fit=crop&q=80',
         badge: null,
-        desc: 'Ekologik xavfsiz TPE materiali, bo\'g\'imlarni himoya qiluvchi qalinlik va ko\'chirish tasmasi.'
+        desc: 'Sirpanmaydigan TPE materiali, bo\'g\'imlarni himoya qiluvchi optimal qalinlik va ko\'chirish tasmasi.'
     },
     {
         id: 37,
-        name: 'Smartfit Perkussion Massajyor Tabancasi 6 Tezlik',
+        name: 'Smartfit Perkussion Massajyor Tabancasi (6 Tezlik)',
         category: 'sports',
         price: 390000,
         oldPrice: 460000,
         rating: 4.8,
-        reviewsCount: 81,
+        reviewsCount: 89,
         image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&auto=format&fit=crop&q=80',
         badge: 'Top Gadjet',
-        desc: 'Mashg\'ulotdan keyingi mushak og\'riqlarini ketkazuvchi 4 ta almashtiriladigan boshcha va uzoq batareya.'
+        desc: 'Mushaklardagi og\'riq va charchoqni daf etuvchi 4 ta almashtiriladigan boshcha va uzoq batareya.'
     },
     {
         id: 38,
-        name: 'Zanglamas Termos Suv Idishi 1L (24 Soat Sovuq)',
+        name: 'Zanglamas Termos Suv Idishi 1L (Sport Qopqoqli)',
         category: 'sports',
         price: 110000,
         oldPrice: 130000,
         rating: 4.9,
-        reviewsCount: 57,
+        reviewsCount: 62,
         image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&auto=format&fit=crop&q=80',
         badge: null,
-        desc: 'Vakuumli ikki qavatli po\'lat, suv sizib chiqishiga qarshi ishonchli qopqoq va sport halqasi.'
+        desc: 'Vakuumli ikki qavatli po\'lat, ichimlikni 24 soat sovuq va 12 soat qaynoq saqlovchi mustahkam termos.'
     },
-
-    // -------------------------------------------------------------
-    // GO'ZALLIK & PARVARISH
-    // -------------------------------------------------------------
     {
         id: 39,
-        name: 'Chanel Coco Mademoiselle Parfyum 100ml',
-        category: 'beauty',
-        price: 1850000,
-        oldPrice: 2100000,
-        rating: 4.9,
-        reviewsCount: 87,
-        image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&auto=format&fit=crop&q=80',
-        badge: 'Asl Fransiya',
-        desc: 'Sharqona va yangi gullar ohangidagi afsonaviy ayollar parfyumi. 24 soatdan ortiq davom etuvchi hid.'
+        name: 'Magnitli Sport Velotrenajyori Uy Uchun',
+        category: 'sports',
+        price: 2400000,
+        oldPrice: 2800000,
+        rating: 4.8,
+        reviewsCount: 35,
+        image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&auto=format&fit=crop&q=80',
+        badge: 'Trenajyor',
+        desc: '8 xil yuklama darajasi, puls va kaloriyani hisoblovchi LCD displey va jim ishlovchi volan.'
     },
     {
         id: 40,
-        name: 'Dior Sauvage Erkaklar Parfyum Suvi 100ml',
-        category: 'beauty',
-        price: 1750000,
-        oldPrice: 1950000,
-        rating: 5.0,
-        reviewsCount: 135,
-        image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop&q=80',
-        badge: 'Xit',
-        desc: 'Kalabriya bergamoti va vanil ohanglari uyg\'unlashgan qat\'iy, jozibali erkaklar ifori.'
-    },
-    {
-        id: 41,
-        name: 'The Ordinary Niacinamide 10% + Zinc 1% (30ml)',
-        category: 'beauty',
-        price: 1450000,
-        oldPrice: 170000,
-        rating: 4.8,
-        reviewsCount: 168,
-        image: 'https://images.unsplash.com/photo-1608248597359-5f284d72856a?w=600&auto=format&fit=crop&q=80',
-        badge: 'Kosmetika',
-        desc: 'Yuz terisidagi teshiklarni toraytiruvchi, ortiqcha yog\'lanishni kamaytiruvchi mashhur zardob.'
-    },
-    {
-        id: 42,
-        name: 'Philips Soqol va Soch Trimmeri Multigroom 9-in-1',
-        category: 'beauty',
-        price: 520000,
-        oldPrice: 600000,
-        rating: 4.8,
-        reviewsCount: 92,
-        image: 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=600&auto=format&fit=crop&q=80',
-        badge: null,
-        desc: 'O\'z-o\'zini charxlovchi po\'lat tig\'lar, suv o\'tkazmaydigan yuviladigan korpus va 70 daqiqa avtonom ishlash.'
-    },
-
-    // -------------------------------------------------------------
-    // BOLALAR TOVARLARI
-    // -------------------------------------------------------------
-    {
-        id: 43,
-        name: 'LEGO City Katta Politsiya Uchastkasi Konstruktori',
-        category: 'kids',
-        price: 820000,
-        oldPrice: 950000,
+        name: 'Everlast Professional Boks Qo\'lqoplari 12oz',
+        category: 'sports',
+        price: 360000,
+        oldPrice: 420000,
         rating: 4.9,
-        reviewsCount: 76,
-        image: 'https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?w=600&auto=format&fit=crop&q=80',
-        badge: 'LEGO',
-        desc: '668 qismdan iborat qiziqarli o\'yin to\'plami: vertolyot, politsiya mashinasi va figurkalar bilan.'
-    },
-    {
-        id: 44,
-        name: 'Masofadan Boshqariladigan 4WD Drift Monster Avto',
-        category: 'kids',
-        price: 340000,
-        oldPrice: 410000,
-        rating: 4.7,
-        reviewsCount: 53,
-        image: 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=600&auto=format&fit=crop&q=80',
-        badge: 'RC Mashina',
-        desc: 'To\'rtta g\'ildirak tortuvchi (4WD) kuchli motor, har qanday notekis yo\'llarda yurish va 2.4GHz pult.'
-    },
-    {
-        id: 45,
-        name: 'Teddy Katta Yumshoq Oq Ayiqcha 120 sm',
-        category: 'kids',
-        price: 390000,
-        oldPrice: 460000,
-        rating: 4.9,
-        reviewsCount: 65,
-        image: 'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=600&auto=format&fit=crop&q=80',
-        badge: 'Sovg\'a',
-        desc: 'Mayin gipoallergen sun\'iy mo\'yna, xavfsiz to\'ldiruvchi va bolalar uchun eng sevimli sovg\'a.'
-    },
-    {
-        id: 46,
-        name: 'Yig\'iladigan Bolalar Uch G\'ildirakli Samokati LED',
-        category: 'kids',
-        price: 290000,
-        oldPrice: 350000,
-        rating: 4.8,
-        reviewsCount: 84,
-        image: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&auto=format&fit=crop&q=80',
+        reviewsCount: 44,
+        image: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&auto=format&fit=crop&q=80',
         badge: null,
-        desc: 'Harakatlanganda yonuvchi LED chiroqli silikon g\'ildiraklar, bo\'yi sozlanuvchi rullar va orqa tormoz.'
-    },
-
-    // -------------------------------------------------------------
-    // AVTOTOVARLAR & JIHOZLAR
-    // -------------------------------------------------------------
-    {
-        id: 47,
-        name: '70mai Dash Cam A810 4K UHD Videoregistrator',
-        category: 'auto',
-        price: 1450000,
-        oldPrice: 1650000,
-        rating: 4.9,
-        reviewsCount: 114,
-        image: 'https://images.unsplash.com/photo-1508974239320-0a029497e820?w=600&auto=format&fit=crop&q=80',
-        badge: 'Sony 4K',
-        desc: 'Sony Starvis 2 sensori, kechasi tiniq tasvirga olish, o\'rnatilgan GPS va harakat datchigi.'
-    },
-    {
-        id: 48,
-        name: 'Baseus Simsiz Kuchli Avtomobil Changyutgichi A3',
-        category: 'auto',
-        price: 380000,
-        oldPrice: 440000,
-        rating: 4.8,
-        reviewsCount: 78,
-        image: 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=600&auto=format&fit=crop&q=80',
-        badge: 'Baseus',
-        desc: '15000Pa kuchli tortish kuchi, metall filtr, yorug\'lik chirog\'i va ixcham simsiz batareya.'
-    },
-    {
-        id: 49,
-        name: 'Baseus MagSafe Avtomobil Magnitli Ushlagichi',
-        category: 'auto',
-        price: 165000,
-        oldPrice: 195000,
-        rating: 4.7,
-        reviewsCount: 62,
-        image: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&auto=format&fit=crop&q=80',
-        badge: null,
-        desc: 'Kuchli neodim magnitlar, 360 daraja aylanish burchagi va deflektor panjarasiga mustahkam mahkamlanish.'
-    },
-    {
-        id: 50,
-        name: 'Avtomobil Raqamli Portativ Shinani Damlash Kompressori',
-        category: 'auto',
-        price: 320000,
-        oldPrice: 380000,
-        rating: 4.8,
-        reviewsCount: 47,
-        image: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?w=600&auto=format&fit=crop&q=80',
-        badge: 'Avto',
-        desc: 'Raqamli manometr, belgilangan bosimga yetganda avtomatik o\'chish va tungi fonar rejimi.'
+        desc: 'Ko\'p qatlamli ko\'pik amortizatsiyasi, bilakni mustahkam mahkamlovchi tasmalar va uzoq xizmat.'
     }
 ];
 
@@ -758,23 +571,23 @@ let cart = JSON.parse(localStorage.getItem('bozorgo_cart')) || [];
 let wishlist = JSON.parse(localStorage.getItem('bozorgo_wishlist')) || [];
 let appliedPromo = null;
 
-// BEPUL YETKAZIB BERISH CHEGARASI (500 000 so'm)
+// BEPUL YETKAZIB BERISH SHARTI (500 000 so'm)
 const FREE_SHIPPING_THRESHOLD = 500000;
 const STANDARD_SHIPPING_FEE = 25000;
 
-// 4. NARXNI SO'MDA FORMATLASH FUNKSIYASI
+// 4. NARXNI SO'MDA FORMATLASH YORDAMCHISI
 function formatPrice(amount) {
     if (typeof amount !== 'number') amount = Number(amount) || 0;
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " so'm";
 }
 
-// Kategoriya bo'yicha mahsulotlar sonini hisoblash
+// Har bir kategoriya bo'yicha mahsulotlar soni
 function getCategoryCount(catId) {
     if (catId === 'all') return products.length;
     return products.filter(p => p.category === catId).length;
 }
 
-// 5. SAHIFANI YUKLASH VA TASHKIL ETISH
+// 5. SAHIFANI YUKLASH
 document.addEventListener('DOMContentLoaded', () => {
     initCategoryMenu();
     initCategoriesShowcase();
@@ -804,7 +617,6 @@ function initCategoryMenu() {
         }`;
         btn.dataset.category = cat.id;
 
-        // Tugma ichida ikonka, toifa nomi va soni (Badge)
         btn.innerHTML = `
             <i class="${cat.icon} ${isActive ? 'text-white' : 'text-brand-600'}"></i>
             <span>${cat.name}</span>
@@ -813,7 +625,7 @@ function initCategoryMenu() {
             }">${count}</span>
         `;
 
-        // Menuni bosganda mahsulotlarga o'tish
+        // Menuni bosganda o'tish
         btn.addEventListener('click', () => {
             selectCategory(cat.id);
         });
@@ -828,7 +640,7 @@ function initCategoriesShowcase() {
     if (!showcaseGrid) return;
     showcaseGrid.innerHTML = '';
 
-    // Vitrinada 'all' dan tashqari toifalarni chizamiz
+    // Vitrinada barcha 6 ta asosiy toifani chizamiz
     const showcaseCategories = categories.filter(c => c.id !== 'all');
 
     showcaseCategories.forEach(cat => {
@@ -836,24 +648,23 @@ function initCategoriesShowcase() {
         const card = document.createElement('div');
         const isActive = cat.id === currentCategory;
 
-        card.className = `showcase-card cursor-pointer p-3.5 sm:p-4 rounded-2xl border bg-white flex flex-col items-center text-center transition group relative overflow-hidden ${
+        card.className = `showcase-card cursor-pointer p-4 rounded-2xl border bg-white flex flex-col items-center text-center transition group relative overflow-hidden ${
             isActive ? 'active border-brand-500 bg-brand-50/50 shadow-md' : 'border-slate-200/80 hover:border-brand-400'
         }`;
         card.dataset.category = cat.id;
 
         card.innerHTML = `
-            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr ${cat.gradient} text-white flex items-center justify-center text-xl sm:text-2xl mb-2.5 shadow-md shadow-slate-200 group-hover:scale-110 transition-transform duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr ${cat.gradient} text-white flex items-center justify-center text-2xl mb-2.5 shadow-md shadow-slate-200 group-hover:scale-110 transition-transform duration-300">
                 <i class="${cat.icon}"></i>
             </div>
-            <h4 class="font-bold text-xs sm:text-sm text-slate-800 group-hover:text-brand-600 transition leading-snug line-clamp-1">
+            <h4 class="font-bold text-xs sm:text-sm text-slate-800 group-hover:text-brand-600 transition leading-snug line-clamp-2">
                 ${cat.name}
             </h4>
-            <span class="text-[11px] text-slate-400 font-medium mt-0.5">
-                ${count} ta tovar
+            <span class="text-[11px] text-slate-400 font-medium mt-1">
+                ${count} ta mahsulot
             </span>
         `;
 
-        // Vitrina kartasini bosganda toifaga o'tish
         card.addEventListener('click', () => {
             selectCategory(cat.id);
         });
@@ -877,7 +688,7 @@ function initCatalogDropdown() {
                 <i class="${cat.icon}"></i>
             </div>
             <span class="font-bold text-xs text-slate-800 group-hover:text-brand-600 transition line-clamp-1">${cat.name}</span>
-            <span class="text-[10px] text-slate-400 font-semibold mt-0.5">${count} ta tovar</span>
+            <span class="text-[10px] text-slate-400 font-semibold mt-0.5">${count} ta mahsulot</span>
         `;
         card.addEventListener('click', () => {
             selectCategory(cat.id);
@@ -887,14 +698,14 @@ function initCatalogDropdown() {
     });
 }
 
-// 9. KATEGORIYANI TANLASH VA MAHSULOTLARGA SILLIQ O'TISH
+// 9. KATEGORIYANI TANLASH VA SILLIQ O'TISH
 function selectCategory(categoryId) {
     currentCategory = categoryId;
 
-    // 1. Yuqori strip menyusidagi tugmalarni yangilash
+    // Menyu tugmalaridagi holatni yangilash
     initCategoryMenu();
 
-    // 2. Vitrina kartochkalaridagi holatni yangilash
+    // Vitrina kartochkalaridagi holatni yangilash
     document.querySelectorAll('.showcase-card').forEach(card => {
         if (card.dataset.category === categoryId) {
             card.classList.add('active', 'border-brand-500', 'bg-brand-50/50');
@@ -903,7 +714,7 @@ function selectCategory(categoryId) {
         }
     });
 
-    // 3. Sarlavha va ta'rifni o'zgartirish
+    // Sarlavha va ta'rifni o'zgartirish
     const foundCat = categories.find(c => c.id === categoryId);
     const titleEl = document.getElementById('currentCategoryTitle');
     const descEl = document.getElementById('currentCategoryDesc');
@@ -913,26 +724,26 @@ function selectCategory(categoryId) {
         descEl.textContent = foundCat.desc;
     }
 
-    // 4. Mahsulotlarni qayta chizish
+    // Mahsulotlarni chizish
     renderProducts();
 
-    // 5. Mahsulotlar bo'limiga silliq skroll qilish
+    // Silliq skroll orqali mahsulotlar bo'limiga o'tish
     const productsSection = document.getElementById('products-section');
     if (productsSection) {
         productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 
-// 10. MAHSULOTLARNI FILTERLASH VA SARALASH
+// 10. MAHSULOTLARNI SARALASH VA FILTERLASH
 function getFilteredAndSortedProducts() {
     let result = [...products];
 
-    // Kategoriya bo'yicha filter
+    // Kategoriya filtri
     if (currentCategory !== 'all') {
         result = result.filter(item => item.category === currentCategory);
     }
 
-    // Qidiruv bo'yicha filter
+    // Qidiruv filtri
     if (searchQuery.trim() !== '') {
         const query = searchQuery.toLowerCase().trim();
         result = result.filter(item => 
@@ -983,14 +794,13 @@ function renderProducts() {
         const card = document.createElement('div');
         card.className = 'product-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden flex flex-col justify-between shadow-sm hover:border-brand-300 relative';
         
-        // Chegirma nishoni
+        // Chegirma foizini hisoblash
         let discountBadge = '';
         if (product.oldPrice && product.oldPrice > product.price) {
             const percent = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
             discountBadge = `<span class="bg-rose-500 text-white font-extrabold text-[11px] px-2 py-0.5 rounded-full shadow-sm">-${percent}%</span>`;
         }
 
-        // Alohida nishon (badge)
         let specialBadge = '';
         if (product.badge) {
             specialBadge = `<span class="bg-amber-400 text-slate-900 font-extrabold text-[11px] px-2 py-0.5 rounded-full shadow-sm">${product.badge}</span>`;
@@ -1019,7 +829,7 @@ function renderProducts() {
                     <i class="${inWishlist ? 'fa-solid fa-heart text-rose-500' : 'fa-regular fa-heart'} text-sm"></i>
                 </button>
 
-                <!-- Tezkor ko'rish belgisi -->
+                <!-- Tezkor ko'rish indikatori -->
                 <div class="absolute inset-0 bg-slate-900/15 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                     <span class="bg-white/95 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-xl shadow">
                         <i class="fa-solid fa-eye mr-1 text-brand-600"></i> Ko'rish
@@ -1094,9 +904,7 @@ function renderProducts() {
     });
 }
 
-// 12. KORZINA (SAVAT) LOGIKASI
-
-// Savatga qo'shish
+// 12. KORZINA (SAVAT) BOSHQARUVI
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
@@ -1120,7 +928,6 @@ function addToCart(productId) {
     showToast(`"${product.name}" savatga qo'shildi!`, 'success');
 }
 
-// Miqdorni o'zgartirish (+ yoki -)
 function updateCartQuantity(productId, delta) {
     const itemIndex = cart.findIndex(item => item.id === productId);
     if (itemIndex === -1) return;
@@ -1138,7 +945,6 @@ function updateCartQuantity(productId, delta) {
     renderProducts();
 }
 
-// Korzinadan to'g'ridan-to'g'ri olib tashlash
 function removeFromCart(productId) {
     const item = cart.find(i => i.id === productId);
     const itemName = item ? item.name : 'Mahsulot';
@@ -1150,7 +956,6 @@ function removeFromCart(productId) {
     showToast(`"${itemName}" savatdan o'chirildi`, 'info');
 }
 
-// Savatni tozalash
 function clearCart() {
     if (cart.length === 0) return;
     if (confirm("Haqiqatan ham savatchani tozalashni xohlaysizmi?")) {
@@ -1163,33 +968,27 @@ function clearCart() {
     }
 }
 
-// Savatni saqlash
 function saveCart() {
     localStorage.setItem('bozorgo_cart', JSON.stringify(cart));
 }
 
-// UMUMIY NARXNI HISOBLASH VA SAVAT UI-NI YANGILASH
+// UMUMIY NARXNI HISOBLASH
 function updateCartUI() {
-    // 1. Hisob-kitoblar
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-    // Yetkazib berish narxi (500 000 so'mdan oshsa bepul)
     let shipping = 0;
     if (subtotal > 0) {
         shipping = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING_FEE;
     }
 
-    // Chegirma (Promokod orqali)
     let discount = 0;
     if (appliedPromo && subtotal > 0) {
         discount = Math.round((subtotal * appliedPromo.discountPercent) / 100);
     }
 
-    // Jami to'lov
     const grandTotal = Math.max(0, subtotal + shipping - discount);
 
-    // 2. Headerdagi indikatorlar
     const cartCountBadge = document.getElementById('cartCountBadge');
     const cartHeaderTotal = document.getElementById('cartHeaderTotal');
     const cartItemsCountText = document.getElementById('cartItemsCountText');
@@ -1204,7 +1003,7 @@ function updateCartUI() {
     if (cartHeaderTotal) cartHeaderTotal.textContent = formatPrice(subtotal);
     if (cartItemsCountText) cartItemsCountText.textContent = totalItems;
 
-    // 3. Bepul yetkazish progress bari
+    // Bepul yetkazish progress bari
     const freeShippingProgress = document.getElementById('freeShippingProgressBar');
     const freeShippingStatusText = document.getElementById('freeShippingStatusText');
     const freeShippingRemainText = document.getElementById('freeShippingRemainText');
@@ -1223,7 +1022,7 @@ function updateCartUI() {
         }
     }
 
-    // 4. Drawer ichidagi ro'yxat
+    // Drawer ichidagi ro'yxat
     const container = document.getElementById('cartItemsContainer');
     const emptyView = document.getElementById('emptyCartView');
     const promoSection = document.getElementById('cartPromoSection');
@@ -1260,7 +1059,6 @@ function updateCartUI() {
                 <div class="text-xs text-brand-700 font-bold mt-0.5">${formatPrice(item.price)}</div>
                 
                 <div class="flex items-center justify-between mt-2">
-                    <!-- Miqdor tugmalari -->
                     <div class="flex items-center border border-slate-200 rounded-lg bg-slate-50 overflow-hidden">
                         <button 
                             onclick="updateCartQuantity(${item.id}, -1)" 
@@ -1277,7 +1075,6 @@ function updateCartUI() {
                         </button>
                     </div>
 
-                    <!-- Umumiy qator narxi va O'chirish tugmasi -->
                     <div class="flex items-center gap-3">
                         <span class="text-xs font-bold text-slate-900">${formatPrice(item.price * item.quantity)}</span>
                         <button 
@@ -1294,7 +1091,6 @@ function updateCartUI() {
         container.appendChild(itemRow);
     });
 
-    // 5. Hisoblar satrlarini yangilash
     document.getElementById('cartSubtotal').textContent = formatPrice(subtotal);
     
     const shippingEl = document.getElementById('cartShipping');
@@ -1343,7 +1139,7 @@ function applyPromoCode() {
     }
 }
 
-// 14. SEVIMLILAR (WISHLIST) LOGIKASI
+// 14. SEVIMLILAR (WISHLIST)
 function toggleWishlist(productId) {
     const index = wishlist.indexOf(productId);
     const product = products.find(p => p.id === productId);
@@ -1413,7 +1209,7 @@ function openWishlistModal() {
     });
 }
 
-// 15. TEZKOR KO'RISH (QUICK VIEW MODAL)
+// 15. TEZKOR KO'RISH (QUICK VIEW)
 function openQuickView(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
@@ -1531,7 +1327,7 @@ function toggleCartDrawer(open = true) {
     }
 }
 
-// 18. KATALOG MEGA MENYUSI
+// 18. KATALOG MEGA-DROPDOWN
 function toggleCatalogDropdown(forceState) {
     const dropdown = document.getElementById('catalogDropdown');
     const chevron = document.getElementById('catalogChevron');
@@ -1564,9 +1360,8 @@ function populateFooterCategories() {
     });
 }
 
-// 20. VOQEALARNI O'RNATISH (EVENT LISTENERS)
+// 20. VOQEALARNI TINGLASH (EVENT LISTENERS)
 function setupEventListeners() {
-    // Korzina
     document.getElementById('openCartBtn').addEventListener('click', () => toggleCartDrawer(true));
     document.getElementById('closeCartBtn').addEventListener('click', () => toggleCartDrawer(false));
     document.getElementById('cartBackdrop').addEventListener('click', () => toggleCartDrawer(false));
@@ -1577,7 +1372,6 @@ function setupEventListeners() {
         if (sec) sec.scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Qidiruv
     const searchInput = document.getElementById('searchInput');
     const clearSearchBtn = document.getElementById('clearSearchBtn');
 
@@ -1598,13 +1392,11 @@ function setupEventListeners() {
         renderProducts();
     });
 
-    // Saralash
     document.getElementById('sortSelect').addEventListener('change', (e) => {
         currentSort = e.target.value;
         renderProducts();
     });
 
-    // Qayta o'rnatish
     document.getElementById('resetFiltersBtn').addEventListener('click', () => {
         searchInput.value = '';
         searchQuery = '';
@@ -1612,10 +1404,8 @@ function setupEventListeners() {
         selectCategory('all');
     });
 
-    // Promokod
     document.getElementById('applyPromoBtn').addEventListener('click', applyPromoCode);
 
-    // Katalog tugmasi
     const catalogBtn = document.getElementById('catalogBtn');
     if (catalogBtn) {
         catalogBtn.addEventListener('click', () => toggleCatalogDropdown());
@@ -1625,7 +1415,6 @@ function setupEventListeners() {
         closeCatalogBtn.addEventListener('click', () => toggleCatalogDropdown(false));
     }
 
-    // Sevimlilar
     document.getElementById('wishlistToggleBtn').addEventListener('click', openWishlistModal);
     document.getElementById('closeWishlistBtn').addEventListener('click', () => {
         document.getElementById('wishlistModal').classList.add('hidden');
@@ -1634,11 +1423,9 @@ function setupEventListeners() {
         document.getElementById('wishlistModal').classList.add('hidden');
     });
 
-    // Tezkor ko'rish
     document.getElementById('closeQuickViewBtn').addEventListener('click', closeQuickView);
     document.getElementById('quickViewBackdrop').addEventListener('click', closeQuickView);
 
-    // Buyurtma berish
     document.getElementById('checkoutBtn').addEventListener('click', () => {
         if (cart.length === 0) return;
         toggleCartDrawer(false);
@@ -1652,7 +1439,6 @@ function setupEventListeners() {
         document.getElementById('checkoutModal').classList.add('hidden');
     });
 
-    // Buyurtma tasdiqlash
     document.getElementById('checkoutForm').addEventListener('submit', (e) => {
         e.preventDefault();
         
