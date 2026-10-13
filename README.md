@@ -4,47 +4,39 @@ Ushbu loyiha barcha zamonaviy talablarga javob beradigan, to'liq funksional **On
 
 ---
 
-## 🌟 Asosiy Imkoniyatlar va Funksiyalar
+## 🌟 Kengaytirilgan Menyular va Bo'limlar (12 Toifa)
 
-1. **Mahsulotlarga mos menyu (Kategoriyalar)**:
-   - Elektronika va smartfonlar
-   - Maishiy texnika
-   - Kiyim va poyabzal
-   - Oziq-ovqat va ichimliklar
-   - Kitoblar va ilm-fan
-   - Sport va salomatlik
-
-2. **Menuni bosganda mahsulotlarga o'tish (Navigatsiya)**:
-   - Menyudagi toifa bosilganda ushbu bo'limga silliq (smooth scroll) orqali o'tadi.
-   - Tanlangan kategoriya bo'yicha mahsulotlar avtomatik filtrlanadi va sarlavha moslashadi.
-   - Yuqoridagi "Katalog" tugmasi orqali ham barcha bo'limlarni ko'rish mumkin.
-
-3. **Mahsulot narxlari o'zbek so'mida**:
-   - Har bir mahsulot narxi va chegirmalari so'mda ifodalangan (masalan: `16 800 000 so'm`, `450 000 so'm`).
-
-4. **Korzinka (Savat) boshqaruvi**:
-   - **Qo'shish**: Mahsulot kartasidagi "Savatga qo'shish" tugmasi orqali.
-   - **Miqdorni boshqarish**: Korzina ichida va mahsulot kartasida `+` va `-` tugmalari orqali donasini o'zgartirish.
-   - **Olib tashlash**: Savatchadagi axlat qutisi (trash) tugmasi orqali istalgan mahsulotni to'g'ridan-to'g'ri olib tashlash.
-   - **Tozalash**: "Tozalash" tugmasi orqali butun savatni bir zumda bo'shatish.
-
-5. **Umumiy narxni hisoblash (Kalkulyator)**:
-   - Mahsulotlar summasi (Subtotal) doimiy yangilanadi.
-   - Bepul yetkazib berish progress-bari (500 000 so'mdan oshsa bepul, aks holda 25 000 so'm).
-   - Promokod tizimi (masalan: `BOZOR10` kodi 10% chegirma beradi).
-   - Jami to'lov miqdori real-vaqtda hisoblanadi.
-
-6. **Qo'shimcha Qulayliklar**:
-   - Tezkor qidiruv (mahsulot nomi va tavsifi bo'yicha jonli filter).
-   - Narx, reyting va ommaboplik bo'yicha saralash (Sort).
-   - Sevimlilar (Wishlist - yurakcha belgilash).
-   - Tezkor ko'rish (Quick View Modal).
-   - Buyurtmani rasmiylashtirish va elektron chek (Checkout & Receipt).
-   - Ma'lumotlarni saqlab qolish (`localStorage`).
+1. 📱 **Smartfon & Gadjetlar** — Apple iPhone 15 Pro Max, Samsung S24 Ultra, Xiaomi 14 Pro, Apple Watch, AirPods Pro
+2. 💻 **Noutbuk & Kompyuter** — MacBook Air M2, ASUS ROG Zephyrus, iPad Pro M2, Logitech MX Master 3S, Xiaomi Monitor
+3. 🏠 **Maishiy texnika** — Artel Sovutgich, LG Kir yuvish mashinasi, Xiaomi Robot Changyutgich, Dyson Fen, De'Longhi Qahva mashinasi
+4. 👕 **Kiyim & Moda** — Erkaklar kostyumi, Kechki ko'ylak, Qishki kurtka, Oversize xudi, Klassik jun palto
+5. 👟 **Poyabzallar** — Nike Air Force 1, Adidas Ultraboost, New Balance 574, Charm tufli
+6. 🍎 **Oziq-ovqat mahsulotlari** — Tog' asali, Samarqand non to'plami, Zaytun moyi, Lavazza qahvasi, Shokolad assorti
+7. 📚 **Kitoblar & Ilm** — Atom odatlar, Stiv Jobs, Boy ota kambag'al ota, Alkimyogar, Saodat asri qissalari
+8. ⚽ **Sport & Salomatlik** — Gantellar to'plami, Yoga gilamchasi, Perkussion massajyor, Termos suv idishi
+9. 💄 **Go'zallik & Parvarish** — Chanel Coco Mademoiselle, Dior Sauvage, The Ordinary, Philips Trimmer
+10. 🧸 **Bolalar tovarlari** — LEGO City Konstruktor, Masofadan boshqariladigan avtomobil, Teddy ayiqcha, LED Samokat
+11. 🚗 **Avtotovarlar & Jihozlar** — 70mai 4K Videoregistrator, Baseus Avto changyutgich, Magnit ushlagich, Avto kompressor
+12. 🌐 **Barchasi** — Barcha toifadagi 50 dan ortiq sara tovarlar
 
 ---
 
-## 🚀 Saytni Ishga Tushirish
+## 🚀 Asosiy Imkoniyatlar
 
-Saytni istalgan brauzerda (Google Chrome, Microsoft Edge, Firefox) ochish uchun quyidagi faylni ikki marta bosing:
-`D:\Sayt\online-market\index.html`
+- **Interaktiv Menyular**:
+  - Yuqori sticky navigatsiya (har bir toifada tovarlar soni ko'rsatiladi);
+  - Asosiy sahifada **"Bo'limlar Menyusi" (Vitrina)** kartochkalari;
+  - **Katalog** mega-menyusi;
+  - Har qanday toifa bosilganda unga tegishli tovarlar avtomatik filtrlanadi va sahifa silliq tarzda (**smooth scroll**) o'tadi.
+- **Narxlar O'zbekiston So'mida**: Aniq va qulay formatlangan narxlar va chegirmalar.
+- **Korzina Boshqaruvi**: Mahsulot qo'shish, sonini o'zgartirish (+/-), alohida olib tashlash va tozalash.
+- **Umumiy Summa Kalkulyatori**: Tovarlar narxi, bepul yetkazib berish progress-bari, `BOZOR10` promokodi va jami to'lov.
+- **Jonli Qidiruv va Saralash**: Harfma-harf qidirish va narx/reyting bo'yicha tartiblash.
+- **Buyurtma va Chek**: Manzil va to'lov turini tanlab buyurtma tasdiqlash va kvitansiya olish.
+
+---
+
+## 🌐 Sayt Havolalari
+
+- **GitHub Repozitoriyasi:** [https://github.com/bbs2189/online-market](https://github.com/bbs2189/online-market)
+- **Jonli Ishlayotgan Sayt (Live Demo):** [https://bbs2189.github.io/online-market/](https://bbs2189.github.io/online-market/)

@@ -116,3 +116,17 @@ html {
     font-feature-settings: "tnum";
     font-variant-numeric: tabular-nums;
 }
+
+/* Kategoriya vitrinasi kartochkalari */
+.showcase-card {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.showcase-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.15);
+}
+.showcase-card.active {
+    border-color: #2563eb !important;
+    background-color: #eff6ff !important;
+    box-shadow: 0 0 0 2px #2563eb;
+}
