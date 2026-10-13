@@ -1,0 +1,118 @@
+/* Maxsus stillar va animatsiyalar */
+
+/* Scrollbarni chiroyli qilish */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Gorizontal skrollbarni yashirish (kategoriyalar menyusi uchun) */
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Mahsulot kartasi animatsiyalari */
+.product-card {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -10px rgba(15, 23, 42, 0.12), 0 4px 6px -2px rgba(15, 23, 42, 0.05);
+}
+
+.product-img-wrapper {
+    overflow: hidden;
+}
+
+.product-img {
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.05);
+}
+
+/* Toast bildirishnomalar animatsiyasi */
+@keyframes toastSlideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes toastSlideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.toast-enter {
+    animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-exit {
+    animation: toastSlideOut 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Badge sakrash animatsiyasi */
+@keyframes badgePop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.35); }
+    100% { transform: scale(1); }
+}
+
+.animate-pop {
+    animation: badgePop 0.3s ease-in-out;
+}
+
+/* Sevimlilar yurak animatsiyasi */
+.heart-active {
+    color: #e11d48 !important;
+    transform: scale(1.1);
+}
+
+/* Chiroyli skroll silliqligi */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Kategoriya tugmalari faol holati */
+.category-btn.active {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+/* Narx formati va matn qirralari */
+.price-tag {
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
